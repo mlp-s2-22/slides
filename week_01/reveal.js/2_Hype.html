@@ -1,0 +1,457 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+			  
+			  <section data-background-color="rgb(4,30,66)">
+			    <img data-src="img/UoE_Stacked Logo_White_v1_160215.png" style="position: absolute; top: -10%; left: 0%; width:50%;"></img>
+			    <br><br><br><br>
+				  <h1>Hype</h1>
+				  <br><br>
+				  <h3>Machine Learning in Python</h3>
+				  <p><a href = "https://github.com/mlp-s2-22/website">https://github.com/mlp-s2-22/website</a></p>
+				  <br>
+				  <h3>Dr. David Elliott</h3>
+				  
+				</section>
+				
+				<section  data-auto-animate
+				          data-background-image="https://images.unsplash.com/photo-1600170885301-7a7fc8ffb5a3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
+                  data-background-opacity="0.3">
+				  <blockquote data-id="quote">
+				    The Navy revealed the embryo of an electronic computer today that it expects will be able to walk, talk, see, write, reproduce itself and be conscious of its existence.
+				  </blockquote>
+				  <p data-id="quote_author">
+				    July 8, 1958, The New York Times
+				  </p>
+				  
+				</section>
+				
+				<section  data-auto-animate
+				          data-background-image="https://images.unsplash.com/photo-1600170885301-7a7fc8ffb5a3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
+                  data-background-opacity="0.3">
+				  <blockquote data-id="quote">
+				    The Navy revealed the embryo of an electronic computer today that it expects will be able to walk, talk, see, write, reproduce itself and be conscious of its existence.
+				  </blockquote>
+				  <p data-id="quote_author">
+				    July 8, 1958, The New York Times
+				  </p>
+				  
+				  <!-- Image from Python Machine Learning -->
+				  <img src='./img/perceptron.jpg' width='100%'>
+				  
+				  <!-- Notes -->
+          <aside class="notes">
+            <ul>
+              <li>The embryo in question is a perceptron, a simple logical circuit designed to mimic a biological neuron.</li>
+              <li>It takes a set of numerical values as inputs, and then spits out either a 0 or a 1.</li>
+              <li>The inventor of the perceptron, Frank Rosenblatt, was a psychologist by training, with broad interests in astronomy and neurobiology. He used a two-million-dollar IBM 704 computer to simulate his first perceptron. He also had a knack for selling big ideas and described his work in grandiose terms.</li>
+              <li>Someday, he predicted, his perceptrons would be able to recognize faces and translate speech in real time. Perceptrons would be able to assemble other perceptrons, and perhaps even attain consciousness.</li>
+            </ul>
+          </aside>
+				  
+				</section>
+				
+        <section  data-background-image="https://images.unsplash.com/photo-1600170885301-7a7fc8ffb5a3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
+                  data-background-opacity="0.3">
+				  <blockquote data-id="quote">
+				    ...will make possible a new generation of artificial intelligence [AI] systems that will perform some functions that humans do with ease: see, speak, listen, navigate, manipulate and control.
+				  </blockquote>
+				  <p data-id="quote_author">
+				    December 28, 2013, The New York Times
+				  </p>
+				  
+				  <!-- Notes -->
+          <aside class="notes">
+            <ul>
+              <li>Though the computer hardware is vastly more powerful, the basic approach remains similar to how it was a half century ago.</li>
+              <li>The hype hasn't diminished<sup>2<sup>.</li>
+              <ul>
+                <li>Newspapers gush about the latest breakthrough.</li>
+                <li>AI jobs are paying superstar salaries.</li>
+                <li>Tech firms are wooing away from campus professors with AI expertise.</li> 
+                <li>Venture capital firms are throwing money at anyone who can say "deep learning" with a straight face.</li>
+              </ul>
+            </ul>
+          </aside>
+				  
+				</section>
+			  
+			  
+			  <!-- Rights of Robots -->
+			  <section  data-auto-animate
+			            data-background-color="rgb(4,30,66)">
+				  <blockquote data-id="quote" style = "font-size: 75%;">
+				    "Policy makers [are] earnestly having meetings to discuss the rights of robots when they should be talking about discrimination in algorithmic decision making." 
+				  </blockquote>
+				  <p style = "font-size: 75%;">Zachary Lipton, AI researcher at Carnegie Mellon University</p>
+				</section>
+			  
+			  
+			  <section  data-auto-animate
+			            data-background-color="rgb(4,30,66)">
+				  <blockquote data-id="quote" style = "font-size: 75%;">
+				    "Policy makers [are] earnestly having meetings to discuss the rights of robots when they should be talking about discrimination in algorithmic decision making." 
+				  </blockquote>
+				  <p style = "font-size: 75%;">Zachary Lipton, AI researcher at Carnegie Mellon University</p>
+				  <br>
+				  <p style = "font-size: 75%;">Advances in AI are great and are spurring a lot of economic activity. However there is currently unreasonable expectations, which drives<sup>1</sup>:</p>
+				  <ul style = "font-size: 75%;">
+				    <li class="fragment fade-left">irresponsible research in both industry and academia,</li>
+				    <li class="fragment fade-left">threats to personal privacy,</li>
+				    <li class="fragment fade-left">motivates misdirected policy.</li> 
+          </ul>
+  				<!-- Notes -->
+          <aside class="notes">
+            <ul>
+              <li>"Researchers and technologists spend far too much time focusing on the sexy what-might-be, and far too little time on the important what-is."<sup>2<sup></li>
+              <li>Andrew Ng says worrying about the dangers of superintelligence right now is like worrying about overpopulation on mars. It could concivably happen, but is quite distant.</li>
+              <li>But the opsing view is that if we dont take the treat seriously now, there could be exponential growth in intelligence and then its too late.</li>
+              <li>The thing is, ML might just return deminishing marginal returns over time (the more we put in the less we get out).</li>
+            </ul>
+          </aside>
+				</section>
+				
+				<section data-background-iframe= "https://gifer.com/embed/fyVz" data-preload>
+  				<blockquote data-id="quote">
+  				  "[AI poses a] fundamental risk to the existence of human civilization."
+  				</blockquote>
+  				<p>Elon Musk, 2017</p>
+          
+          <!-- Notes -->
+          <aside class="notes">
+            <ul>
+              <li>"There is a vast gulf between AI alarmism in the popular press, and the reality of where AI research actually stands."<sup>1</sup></li>
+              <li>Compared to the human brain, machine learning isn't especially efficient.</li> 
+              <li>A machine learning program requires millions or billions of data points to create its statistical models.</li>
+              <li>Its only now those petabytes of data are now readily available, along with powerful computers to process them<sup>2</sup>.</li>
+            </ul>
+          </aside>
+        </section>
+        
+        <!--
+        Fundamental Use Cases for Artificial Intelligence
+        -->
+        
+        <section>
+          <section data-background-color="rgb(4,30,66)">
+  				  <h2>Fundamental Use Cases for Artificial Intelligence</h2>
+  				  <br>
+  				  <p>For many tasks, machine learning proves to be more flexible and nuanced than the traditional programs governed by rules or even humans<sup>2</sup>.</p>
+  				  
+            <aside class="notes">
+              <p>Rosenblatt also deserves some credit because many of his ambitious predictions for the use cases of perceptron-like algorithms have come true.</p>
+              <p>What follows is by no means an exhaustive list!</p>
+            </aside>
+  				</section>
+				
+  				<section  data-auto-animate 
+  			            data-background-image="https://images.unsplash.com/photo-1615834593791-aa31b118afe0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1053&q=80" 
+  			            data-background-opacity="0.3" >
+  				  
+  				  <div class="r-hstack" style="transform: scale(1.3)">
+  				    <p>Digital personal assistants and chatbots</p>
+				    </div>
+				    
+				    <aside class="notes">
+              <ul>
+                <li>Machine learning has enabled great advances in natural language processing compared to legacy Interactive Voice Response (IVR) systems.</li>
+                <li>Assistants such as Apples' Siri, Amazons' Alexa, and Googles' Assistant, allow you to do many different tasks:</li>
+    				    <ul>
+    				      <li>Control smart devices</li>
+    				      <li>Play music and videos</li>
+    				      <li>Set timers and reminders</li>
+    				      <li>Make appointments</li>
+    				      <li>Translate languages</li>
+    				      <li>Order from e-commerce sites</li>
+    				    </ul>
+    				    <li>All services continue to get better as they continuously learn from interactions with customers.</li>
+              </ul>
+            </aside>
+  				  
+  				</section>
+  				
+  				<section  data-auto-animate 
+  			            data-background-image="https://cdn.motor1.com/images/mgl/o3YLb/s1/google-car.jpg" 
+  			            data-background-opacity="0.3" >
+  				  
+  				  <div class="r-hstack" style="transform: scale(1.3)">
+  				    <p>Self-Driving Cars</p>
+				    </div>
+  				  <div class="r-vstack items-start" style="color: #808080">
+  				    <p>Digital personal assistants and chatbots</p>
+				    </div>
+				    
+				    <aside class="notes">
+              <ul>
+                <li>Self-driving cars use a variety of technologies such as radar, sonar, lidar, computer vision, and GPS.<sup>3<sup></li>
+                <li>"Waymo's autonomous cars have driven eight million miles on public roads as well as five billion miles in simulated environments...The disruption caused in our society by this advance in AI alone will be massive. The need for delivery drivers, taxi drivers, and truckers will be obviated. Even if there are still car accidents in a driverless future, millions of lives will be saved because we will eliminate distracted driving and drunk driving...Liability for car accidents will shift from the driver of the vehicle to the manufacturer of the vehicle doing away with the need to have car insurance. This last point is probably one of the reasons why car manufacturers have been slow to deploy this technology. Even car ownership might be flipped on its head since we could summon a car whenever we need one instead of needing one all the time."<sup>3<sup></li>
+              </ul>
+            </aside>
+  				  
+  				</section>
+  				
+  				<section  data-auto-animate 
+  				          data-background-iframe="https://gfycat.com/ifr/ImpossibleOrderlyDiscus" 
+				            data-preload
+				            data-background-opacity="0.2">
+  				  
+  				  <div class="r-hstack" style="transform: scale(1.3)">
+  				    <p>Shipping and Warehouse Management</p>
+				    </div>
+  				  <div class="r-vstack items-start" style="color: #808080">
+  				    <p>Self-Driving Cars</p>
+  				    <p>Digital personal assistants and chatbots</p>
+				    </div>
+				    
+				    <aside class="notes">
+              <ul>
+                <li>An Amazon sorting facility demonstrates the symbiotic relationship between humans, computers, and robots that could be present across many industries.</li>
+                <li>"Computers take customer orders and decide where to route merchandise, the robots act as mules carrying the pallets and inventory around the warehouse. Humans plug the "last mile" problem by hand picking the items that are going into each order."<sup>3<sup></li>
+                <li>"Robots struggle dealing with objects of different sizes, weights, shapes, and fragility; a task that many humans can perform effortlessly. People, therefore, handle the tasks that the robots encounter difficulty with."<sup>3<sup></li>
+                <li>"Amazon's director of robotics fulfillment acknowledged in May 2019 that a fully automated warehouse is at least 10 years away."<sup>3<sup></li>
+              </ul>
+            </aside>
+  				  
+  				</section>
+  				
+  				<section  data-auto-animate 
+  			            data-background-image="https://content.altexsoft.com/media/2020/04/shutterstock_482711689-1.jpg" 
+  			            data-background-opacity="0.3" >
+  				  
+  				  <div class="r-hstack" style="transform: scale(1.3)">
+  				    <p>Healthcare</p>
+				    </div>
+  				  
+  				  <div class="r-vstack items-start" style="color: #808080">
+  				    <p>Shipping and Warehouse Management</p>
+  				    <p >Self-Driving Cars</p>
+  				    <p>Digital personal assistants and chatbots</p>
+				    </div>
+				    
+				    <aside class="notes">
+              <ul>
+                <li> "AI can assist in generating drug candidates (that is, molecules to be tested for medical application) and then quickly eliminating some of them using constraint satisfaction or experiment simulation. We will learn more about constraint satisfaction programming in later chapters. In a nutshell, this approach allows us to speed up drug discovery by quickly generating millions of possible drug candidates and just as quickly rejecting them if the candidates do not satisfy certain predetermined constraints"<sup>3<sup></li>
+                <li>"Machine learning algorithms can be used to better price insurance by more accurately predicting how much will be spent on a patient, how good a driver an individual is, or how long a person will live."<sup>3<sup></li>
+                <li>"Doctors can make better diagnosis on their patients and be more productive in their practice by using sophisticated rules engines and machine learning."<sup>3<sup></li>
+                <li>"Medical imaging data is a complex and rich source of information about patients. CAT scans, MRIs, and X-rays contain information that is otherwise unavailable. There is a shortage of radiologists and clinicians that can interpret them. Getting results from these images can sometimes take days and can sometimes be misinterpreted."</li>
+                <li>"At some point soon, we will be able to use the human genome as input to machine learning models and be able to detect and predict a wide variety of diseases and conditions using this vast dataset."<sup>3<sup></li>
+              </ul>
+            </aside>
+  				  
+  				</section>
+  				
+  				<section  data-auto-animate 
+  			            data-background-image="https://cdn.searchenginejournal.com/wp-content/uploads/2018/10/14-Great-Search-Engines-You-Can-Use-Instead-of-Google.png" 
+  			            data-background-opacity="0.3" >
+  				  
+  				  <div class="r-hstack" style="transform: scale(1.3)">
+  				    <p>Knowledge search</p>
+				    </div>
+  				  
+  				  <div class="r-vstack items-start" style="color: #808080">
+  				    <p>Healthcare</p>
+  				    <p>Shipping and Warehouse Management</p>
+  				    <p >Self-Driving Cars</p>
+  				    <p>Digital personal assistants and chatbots</p>
+				    </div>
+				    
+				    <aside class="notes">
+              <ul>
+                <li>ML is deeply embedded in Google search and behind why it is constantly improving the relevancy of its results.<sup>3<sup></li>
+                <li>"Google might have a hard time explaining how it works. You see, this is one of the dilemmas of deep learning. In many cases, it can provide highly accurate results, but deep learning algorithms are usually hard to understand in terms of why an individual answer was given."<sup>3<sup></li>
+                <li>"The lack of explainability of deep learning algorithms has major implications, including legal implications. Lately, Google and Facebook among others, have found themselves under the microscope to determine if their results are biased. In the future, legislators and regulators might require that these tech giants provide a justification for a certain result. If deep learning algorithms do not provide explainability, they might be forced to use other less accurate algorithms that do."<sup>3<sup></li>
+              </ul>
+            </aside>
+  				  
+  				</section>
+  				
+  				<section  data-auto-animate 
+  			            data-background-image="https://datawarrior.files.wordpress.com/2019/06/1_natsh_3hrqt3xk7bv48nww.png?w=870" 
+  			            data-background-opacity="0.3" >
+  				  
+  				  <div class="r-hstack" style="transform: scale(1.3)">
+  				    <p>Recommendation systems</p>
+				    </div>
+  				  
+  				  <div class="r-vstack items-start" style="color: #808080">
+  				    <p>Knowledge search</p>
+  				    <p>Healthcare</p>
+  				    <p>Shipping and Warehouse Management</p>
+  				    <p >Self-Driving Cars</p>
+  				    <p>Digital personal assistants and chatbots</p>
+				    </div>
+				    
+				    <aside class="notes">
+              <ul>
+                <li>"Recommendation systems are another example of AI technology that has been weaved into our everyday lives. Amazon, YouTube, Netflix, LinkedIn, and Facebook all rely on recommendation technology and we don't even realize we are using it. Recommendation systems rely heavily on data and the more data that is at their disposable, the more powerful they become. It is not coincidence that these companies have some of the biggest market caps in the world and their power comes from them being able to harness the hidden power in their customer's data."<sup>3<sup></li>
+                <li>"An important component of good recommendation systems is a randomization factor that occasionally "goes out on a limb" and makes oddball recommendations that might not be that related to the initial user's choices."<sup>3<sup></li>
+              </ul>
+            </aside>
+  				  
+  				</section>
+  				
+  				<section  data-auto-animate 
+  			            data-background-image="https://ddbuckingham.files.wordpress.com/2020/10/smart-home.jpg" 
+  			            data-background-opacity="0.3" >
+  				  
+  				  <div class="r-hstack" style="transform: scale(1.3)">
+  				    <p>The smart home</p>
+				    </div>
+  				  
+  				  <div class="r-vstack items-start" style="color: #808080">
+  				    <p>Recommendation systems</p>
+  				    <p>Knowledge search</p>
+  				    <p>Healthcare</p>
+  				    <p>Shipping and Warehouse Management</p>
+  				    <p >Self-Driving Cars</p>
+  				    <p>Digital personal assistants and chatbots</p>
+				    </div>
+				    
+				    <aside class="notes">
+              <ul>
+                <li>"Home monitoring is one area where great solutions are generally available already. The Ring video doorbell from Amazon and the Google Nest thermostat are two inexpensive options that are widely available and popular."<sup>3<sup></li>
+                <li>"A robotic vacuum cleaner is an autonomous robotic vacuum cleaner that uses AI to vacuum a surface. Depending"<sup>3<sup></li>
+                <li>There are many more exciting opportunities to bring AI into the home (when it becomes economically fesible)</li>
+                <ul>
+                  <li>Cooking</li>
+                  <li>Make beds</li>
+                  <li>Pick up items off the floor</li>
+                </ul>
+              </ul>
+            </aside>
+  				  
+  				</section>
+  				
+  				<section  data-auto-animate 
+  			            data-background-image="https://i.guim.co.uk/img/media/6e698b71e16ecdeb5aca1d040b9c819a069f8065/469_955_2908_1744/master/2908.jpg?width=1200&quality=85&auto=format&fit=max&s=9ef1681be5b1a3bb0fd29f86fbf75c6a" 
+  			            data-background-opacity="0.3" >
+  				  
+  				  <div class="r-hstack" style="transform: scale(1.3)">
+  				    <p>Gaming</p>
+				    </div>
+  				  
+  				  <div class="r-vstack items-start" style="color: #808080">
+  				    <p>The smart home</p>
+  				    <p>Recommendation systems</p>
+  				    <p>Knowledge search</p>
+  				    <p>Healthcare</p>
+  				    <p>Shipping and Warehouse Management</p>
+  				    <p >Self-Driving Cars</p>
+  				    <p>Digital personal assistants and chatbots</p>
+				    </div>
+				    
+				    <aside class="notes">
+              <ul>
+                <li>"It's only in the last few years that machines have been able to consistently beat the masters of some of the harder games."<sup>3<sup></li>
+                <li>Games such as StarCraft 2, Jeopardy, Chess, and Go all have extensive machine learning research</li>
+              </ul>
+            </aside>
+  				  
+  				</section>
+  				
+  				<section  data-auto-animate 
+  			            data-background-image="https://cdn.corporatefinanceinstitute.com/assets/Loans-1.jpeg" 
+  			            data-background-opacity="0.3" >
+  				  
+  				  <div class="r-hstack" style="transform: scale(1.3)">
+  				    <p>Underwriting and deal analysis</p>
+				    </div>
+  				  
+  				  <div class="r-vstack items-start" style="color: #808080">
+  				    <p>Gaming</p>
+  				    <p>The smart home</p>
+  				    <p>Recommendation systems</p>
+  				    <p>Knowledge search</p>
+  				    <p>Healthcare</p>
+  				    <p>Shipping and Warehouse Management</p>
+  				    <p >Self-Driving Cars</p>
+  				    <p>Digital personal assistants and chatbots</p>
+				    </div>
+  				  
+  				  <aside class="notes">
+              <ul>
+                <li></li>
+              </ul>
+            </aside>
+  				  
+  				</section>
+  				
+  				<section  data-auto-animate 
+  			            data-background-image="https://cdn.corporatefinanceinstitute.com/assets/Loans-1.jpeg" 
+  			            data-background-opacity="0.3" >
+  				  
+  				  <div class="r-vstack items-start" style="color: #808080">
+  				    <p>Underwriting and deal analysis</p>
+  				    <p>Gaming</p>
+  				    <p>The smart home</p>
+  				    <p>Recommendation systems</p>
+  				    <p>Knowledge search</p>
+  				    <p>Healthcare</p>
+  				    <p>Shipping and Warehouse Management</p>
+  				    <p >Self-Driving Cars</p>
+  				    <p>Digital personal assistants and chatbots</p>
+				    </div>
+  				  
+  				  <aside class="notes">
+              <ul>
+                <li>"Underwriting is the process by which an institution determines if they want to take a financial risk in exchange for a premium."<sup>3<sup></li>
+                <li>Examples include:</li>
+                <ul>
+                  <li>Issuing an insurance policy</li>
+                  <li>Loans</li>
+                  <li>Securities underwriting and Initial Public Offerings (IPOs)</li>
+                </ul>
+                <li>"determining whether an insurance policy or a loan should be issued and at what price can be very costly if the wrong decision is made."<sup>3<sup></li>
+                <li>"Many lenders are already using machine learning in their underwriting."<sup>3<sup></li>
+              </ul>
+            </aside>
+  				  
+  				</section>
+
+				</section>
+			  
+			  <section data-background-color="rgb(4,30,66)" data-visibility="uncounted">
+			    <h2>References</h2>
+			    <ol>
+			      <li>West, Jevin D.; Bergstrom, Carl T.. Calling Bullshit, Penguin Books Ltd.</li>
+			      <li>O'Neil, Cathy. Weapons of Math Destruction (p. 2). Penguin Books Ltd.</li>
+			      <li>Alberto, A., & Prateek, J. (2020). Artificial Intelligence with Python. Packt Publishing Ltd.</li>
+			    </ol> 
+			  
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				
+				navigationMode: "linear",
+        
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>

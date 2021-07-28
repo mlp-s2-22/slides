@@ -1,0 +1,835 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+			  
+			  <!--
+			  Intro Slide
+			  -->
+			  
+			  <section data-background-color="rgb(4,30,66)">
+			    <img data-src="img/UoE_Stacked Logo_White_v1_160215.png" style="position: absolute; top: -10%; left: 0%; width:50%;"></img>
+			    <br><br><br><br>
+				  <h2>The Machine Learning Pipeline</h2>
+          <br>
+          <h4>Dr. David Elliott</h4>
+				  <br>
+				  <h4>Machine Learning in Python</h4>
+				  <p><a href = "https://github.com/mlp-s2-22/website">https://github.com/mlp-s2-22/website</a></p>
+				</section>
+				
+				<!--
+			  Full Pipeline
+			  -->
+			  
+			  <section  data-background-image='./img/week_1_figures-3.png'>
+			    
+			   <!-- Notes -->
+          <aside class="notes">
+            <ul>
+              <li>key</li>
+              <ul>
+                <li>Orange: Preparation</li>
+                <li>Blue: Pipeline Development</li>
+                <li>Red: Decision</li>
+                <li>Green: Pipeline Evaluation</li>
+                <li>Yellow: Deployment</li>
+              </ul>
+              <li>"Model training is only a small piece of the machine learning process."<sup>1</sup></li>
+              <li>"...creating successful machine learning systems involves a lot more than choosing between a random forest model and a support vector machine model."<sup>1</sup></li>
+              <li>"From choosing the proper ingestion mechanism to data cleansing to feature engineering, the initial steps in a machine learning pipeline are just as important as model selection. Also being able to properly measure and monitor the performance of your model in production and deciding when and how to retrain your models can be the difference between great results and mediocre outcomes. As the world changes, your input variables change, and your model must change with them."<sup>1</sup></li>
+              <li>"One important item to consider is that each step in the pipeline produces an output that becomes the input for the next step in the pipeline. The term pipeline is somewhat misleading as it implies a one-way flow of data. In reality, machine learning pipelines can be cyclical and iterative. Every step in the pipeline might be repeated to achieve better results or cleaner data. Finally, the output variable might be used as input the next time the pipeline cycle is performed."<sup>1</sup></li>
+            </ul>
+          </aside>
+			  </section>
+			  
+			  <section  data-background-image='./img/week_1_figures-5.png'>
+			    
+			  </section>
+			  
+			  <!--
+			  Problem definition
+			  -->
+			  
+			  <section  data-background-color="rgb(4,30,66)">
+		      <h2>Problem Definition</h2>
+			    <p>Asking and framing the <em>right question</em> is really important<sup>1,2</sup>.</p>
+			    <br>
+			    <ul style="font-size:90%;">
+			      <li class="fragment fade-left">What are the current solutions (baseline model)?</li> 
+			      <li class="fragment fade-left">How should performance be measured so it aligns with research/buisness objectives?</li>
+            <li class="fragment fade-left">What are the minimal performance thresholds we are aiming to achieve?</li>
+            <li class="fragment fade-left">Is human expertise available to help the project?</li>
+			    </ul>
+			    <!-- Notes -->
+          <aside class="notes">
+            <ul>
+              <li>We will be focusing on this in workshops and in reports.</li>
+              <li>"Time spent here can save you orders of magnitude of time on the later stages of the pipeline. It might mean the difference between making a technological breakthrough or failing, or it could be the difference between a startup company succeeding or the company going bankrupt."<sup>1</sup></li>
+              <li>You can continuously refine your problem statement as you gain more information about the data. In otherwords, this is not hypothesis testing.</li>
+            </ul>
+          </aside>
+          
+        </section>
+        
+        <!--
+			  Data Collection
+			  -->
+			  
+			  <section>
+  			  <section  data-background-color="rgb(4,30,66)">
+  		      <h2>Data Collection</h2>
+  			    <p>Obtaining relevant datasets to answer a problem might be quite difficult (e.g. expensive, time-consuming).</p>
+  			    <br>
+            <div style="text-align:left">
+    			    <p class="fragment" data-fragment-index="1">Data often comes from the "real world", which means it is full of human errors and biases. </p>
+    			    <br>
+    			    <p class="fragment" data-fragment-index="2">You may need to consider how to source, ingest, and store data*.</p>
+    			    <p class="fragment" data-fragment-index="2" style="font-size:50%;">*But we're not going to worry about this too much on this course.</p>
+            </div>
+  			    <!-- Notes -->
+            <aside class="notes">
+              <ul>
+                <li>We will be focusing on this in week 2.</li>
+                <li>Some data storage considerations<sup>1</sup>:</li>
+                <ul>
+                  <li>What data provider or vendor to use?</li>
+      			      <li>How will it be ingested? Hadoop, Impala, Spark, Python ect.?</li>
+      			      <li>Should it be stored as a file or in a database?</li>
+      			      <ul>
+      			        <li>What type of database? Traditional RDBMS, NoSQL, graph</li>
+      			        <li>Do we have a real-time feed into the pipeline?</li>
+      			        <li>What format should the input be? Parquet, JSON, CSV?</li>
+      			      </ul>
+      			      <li>We may need to consolidate, merge, and/or join multiple data sources before we can feed them into the model.</li>
+    			      </ul>
+              </ul>
+            </aside>
+            
+          </section>
+          
+          <section  data-background-color="rgb(4,30,66)">
+  		      <p>Deciding on variables which should be part of the input data requires human (not artificial) intelligence.</p>
+  		      <br>
+  		      <table style="width:100%, border: none; font-size:90%;">
+  		          <tr>
+                  <th>Restaurant Daily Sales</th>
+                  <th>Stock prices</th>
+                </tr>
+                <tr>
+                  <td>Previous day's sales</td>
+                  <td>Previous day's price</td>
+                </tr>
+                <tr>
+                  <td>Day of the week</td>
+                  <td>Interest rates</td>
+                </tr>
+                <tr>
+                  <td>Holiday or not holiday</td>
+                  <td>Company earnings</td>
+                </tr>
+                <tr>
+                  <td>Rain or no rain</td>
+                  <td>News headlines</td>
+                </tr>
+              </table>
+  		      
+  			    <!-- Notes -->
+            <aside class="notes">
+              <ul>
+                <li>Picking relevant input variables often requires domain knowledge or expertise.</li>
+                <li>You can't just throw everything you can think of into the model. This will result in the <em>"curse of dimensionality"</em></li>
+              </ul>
+            </aside>
+            
+          </section>
+        </section>
+			  
+			  <!--
+			  Exploratory Data Analysis
+			  -->
+			  
+
+		    <section  data-background-image="/img/pairplot.png" 
+                  data-background-opacity="0.3"
+                  data-background-color="rgb(4,30,66)"
+                  data-preload>
+		      <h2>Exploratory Data Analysis</h2>
+			    <p>Before applying any machine learning methods, we should explore our data.</p>
+			    <br>
+			    <div style="text-align:left">
+  			    <ul style="font-size:90%;">
+              <li class="fragment fade-left">Visualize the data,</li>
+              <li class="fragment fade-left">Check model assumptions,</li>
+              <li class="fragment fade-left">Look for correlations,</li>
+              <li class="fragment fade-left">Identify outliers, patterns and trends.</li>
+            </ul>
+          </div>
+			    
+			    <!-- Notes -->
+          <aside class="notes">
+            <ul>
+              <li>We will be focusing on this in weeks 1 and 2.</li>
+              <li>In this week's lab, we will be using:</li>
+              <ul>
+                <li><code>pandas</code> to store and create data frames and produce basic summaries</li>
+                <li><code>seaborn</code> to create statistical graphics.</li>
+              </ul>
+            </ul>
+          </aside>
+          
+        </section>
+			  
+			  <!--
+			  Pre-processing
+			  -->
+			  
+		    <section  data-background-color="rgb(4,30,66)">
+		      <h2>Pre-processing</h2>
+		      <p>Typically data is messy and needs to be prepared for downstream transformations and modelling.</p>
+		      <br>
+		      <div style="text-align:left">
+  			    <ul style="font-size:90%;">
+			        <li class="fragment fade-left">Data separation (training, validation, test sets),</li>
+			        <li class="fragment fade-left">Impute/remove missing values,</li>
+			        <li class="fragment fade-left">Correct for inconsistent values,</li>
+              <li class="fragment fade-left">Remove duplicate records.</li>
+            </ul>
+          </div>
+			    
+			    <!-- Notes -->
+          <aside class="notes">
+            <ul>
+              <li>We will be focusing on this in weeks 1 and 2.</li>
+              <li>"You can then train the model on the training data in order to later make predictions on the test data. The training set is visible to the model and it is trained on this data. The training creates an inference engine that can be later applied to new data points that the model has not previously seen. The test dataset (or subset) represents this unseen data and it now can be used to make predictions on this previously unseen data."<sup>1</sup></li>
+              <li>[TODO: NOTE ON IMPUTATION AND REMOVAL]</li>
+              <li>Data may be formatted inconsistently, for example there may be multiple ways dates are formated (e.g. 11/1/2021, 11/01/21).</li>
+              <li>[TODO: NOTE ON REMOVING DUPLICATE RECORDS]</li>
+              <li>Feature scaling is important as many machine learning algorithms are sensitive to the scale and magnitude of the features. Feature scaling will typically improve performance and training times. An example is to "standardise" features by centering the variable at zero and standardizing the variance to 1.</li>
+            </ul>
+          </aside>
+            
+			  </section>
+			  
+			  <!--
+			  Feature Engineering
+			  -->
+			  
+			  <section>
+			    <section  data-background-color="rgb(4,30,66)">
+			      <h2>Feature Engineering</h2>
+			      <p><em>"A feature is a numeric representation of an aspect of raw data."</em><sup>3</sup></p>
+			      <div style="text-align:left">
+              <p class = "fragment">Feature engineering means formulating appropriate features given the data, the model, and the task.</p>
+			      </div>
+            <br>
+			      <div style="text-align:left">
+  			      <p class = "fragment"><strong>Feature Transformations</strong></p>
+  			      <ul style="font-size:90%;">
+  			        <li class = "fragment fade-left"> Changing the distribution of your data (e.g., log transformation, standardization, min-max scaling etc.).</li>
+  			        <li class = "fragment fade-left">Higher-dimensional feature spaces (e.g., polynomials).</li> 
+  			        <li class = "fragment fade-left">Lower dimensional feature spaces (dimensionality reduction, hashing, clustering).</li>
+  			      </ul>
+  			    </div>
+  			    
+  			    <!-- Notes -->
+            <aside class="notes">
+              <ul>
+                <li>We will be focusing on this in week 2.</li>
+                <li>"There are many ways to turn raw data into numeric measurements, which is why features can end up looking like a lot of things. Naturally, features must derive from the type of data that is available. Perhaps less obvious is the fact that they are also tied to the model; some models are more appropriate for some types of features, and vice versa. The right features are relevant to the task at hand and should be easy for the model to ingest."<sup>3<sup></li>
+                <li><em>"I see [feature engineering] more as a 'data/feature creation' step rather than a data 'sanitizing' step."</em><sup>4</sup></li>
+                <li>Feature scaling is important as many machine learning algorithms are sensitive to the scale and magnitude of the features. Feature scaling will typically improve performance and training times. An example is to "standardise" features by centering the variable at zero and standardizing the variance to 1.</li>
+              </ul>
+            </aside>
+            
+          </section>
+          
+          <!--
+  			  Dimension Reduction
+  			  -->
+          
+          <section  data-background-color="rgb(4,30,66)">
+			      <h3>Dimension Reduction</h3>
+			      
+			      <p>We want to remove <em>"uninformative information"</em> and retain useful bits<sup>3</sup>.<p>
+
+            <div style="text-align:left">
+  			      <h4 class="fragment" data-fragment-index="1">Feature Selection</h4>
+  			      <p class="fragment">Create a subset of the original set of features.</p>
+              <em style="font-size:80%;">
+                <li class="fragment">Feature Importances</li>
+                <li class="fragment">Regularization</li>
+              </em>
+  			      <br>
+  			      <h4 class="fragment" data-fragment-index="1">Feature Extraction</h4>
+  			      <p class="fragment">Create new synthetic features through combining the original features and discarding less important ones.</p>
+              <em style="font-size:80%;">
+                <li class="fragment">Principal Component Analysis</li>
+              </em>
+            </div>
+            
+            <!-- Notes -->
+            <aside class="notes">
+              <ul>
+                <li>We will be focusing on this in week 3.</li>
+                <li><p><strong>Uses:</strong> reduce a models complexity, run time, and potential for overfitting.</p></li>
+                <li>If you have too many features, it may be that some of them are highly correlated and therefore redundant. Therefore we can either select just some of them, or compress them onto a lower dimensional subspace.</li>
+                <li>Latent factors represent a low dimensional projection of the data onto a subspace which captures most of the information in the data.</li>
+                <li>The low-dimensional representations are often used to extract features from high-dimensional inputs in supervised settings, typically resulting in better predictions.</li>
+                <li>Examples</li>
+                <ul>
+                  <li>latent factor models are commonly used to interpret gene microarray data.</li>
+                  <li>Remove correlated features.</li>
+                </ul>
+              </ul>
+            </aside>
+            
+          </section>
+			  </section>
+			  
+			  <!--
+			  Models
+			  -->
+			  
+			  <section>
+			    <section  data-auto-animate
+			              data-background-image='./img/week_1_figures-6_crop.png' 
+                    data-background-size="contain"
+                    data-background-color="rgb(4,30,66)"
+                    data-background-opacity="0.2">
+            <h2>Model Training</h2>
+  			    
+  			    <!-- Notes -->
+            <aside class="notes">
+              <ul>
+                <li>We will be focusing on this from week 4.</li>
+              </ul>
+            </aside>
+            
+          </section>
+          
+          <section  data-auto-animate
+                    data-background-image='./img/week_1_figures-6_crop.png' 
+                    data-background-size="contain"
+                    data-background-color="rgb(255,255,255)">
+  			    
+  			    <!-- Notes -->
+            <aside class="notes">
+              <ul>
+              </ul>
+            </aside>
+            
+          </section>
+          
+          <section  data-background-color="rgb(4,30,66)">
+            <h3>"Classical" Methods</h3>
+            <p>Classical methods are categorised typically in relation to ensemble or neural network/deep
+learning models.</p>
+            <br>
+            <ul>
+              <li class="fragment">Have a background in statistics, rather than computing.</li>
+              <li class="fragment">Used to find similarities in data points and searching for patterns.</li>
+          </section>
+          
+          <section  data-background-color="rgb(4,30,66)">
+            <h4>Unsupervised Learning</h4>
+            <br>
+            <p style="text-align:left">
+              In unsupervised learning we aim to use data: 
+              
+              $$D = \{\mathbf{x}_n\}^N_{n=1},$$ 
+              
+              with inputs $\mathbf{x}_n$ and $N$ training examples, to learn how to represent or find interesting patterns in the data.
+            </p>
+          </section>
+          
+          <!-- Notes -->
+            <aside class="notes">
+              <ul>
+                <li>We will be focusing on this in weeks 3 and 4.</li>
+              </ul>
+            </aside>
+          
+          <!--
+          Inputs
+          -->
+
+          <section  data-background-color="rgb(4,30,66)">
+            <p>
+              $\mathbf{x}$ is a $D$-dimensional vector of numbers (e.g. a patient's blood pressure, heart rate, and weight).
+            </p>
+            <ul>
+              <li class="fragment">These are referred to as features, covariates, attributes, or predictors.</li>
+              <li class="fragment">They can also be more general objects: image, sentence/tweet, email, time series, graph, etc.</li>
+            </ul>
+            <br><br>
+            <table class="table table-bordered table-hover table-condensed fragment" style="font-size:30%;">
+              <thead><tr><th title="Field #1">fixed acidity</th>
+              <th title="Field #2">volatile acidity</th>
+              <th title="Field #3">citric acid</th>
+              <th title="Field #4">residual sugar</th>
+              <th title="Field #5">chlorides</th>
+              <th title="Field #6">free sulfur dioxide</th>
+              <th title="Field #7">total sulfur dioxide</th>
+              <th title="Field #8">density</th>
+              <th title="Field #9">pH</th>
+              <th title="Field #10">sulphates</th>
+              <th title="Field #11">alcohol</th>
+              <th title="Field #12">quality</th>
+              </tr></thead>
+              <tbody><tr>
+              <td align="right">7.4</td>
+              <td align="right">0.7</td>
+              <td align="right">0</td>
+              <td align="right">1.9</td>
+              <td align="right">0.076</td>
+              <td align="right">11</td>
+              <td align="right">34</td>
+              <td align="right">0.9978</td>
+              <td align="right">3.51</td>
+              <td align="right">0.56</td>
+              <td align="right">9.4</td>
+              <td align="right">5</td>
+              </tr>
+              <tr>
+              <td align="right">7.8</td>
+              <td align="right">0.88</td>
+              <td align="right">0</td>
+              <td align="right">2.6</td>
+              <td align="right">0.098</td>
+              <td align="right">25</td>
+              <td align="right">67</td>
+              <td align="right">0.9968</td>
+              <td align="right">3.2</td>
+              <td align="right">0.68</td>
+              <td align="right">9.8</td>
+              <td align="right">5</td>
+              </tr>
+              <tr>
+              <td align="right">7.8</td>
+              <td align="right">0.76</td>
+              <td align="right">0.04</td>
+              <td align="right">2.3</td>
+              <td align="right">0.092</td>
+              <td align="right">15</td>
+              <td align="right">54</td>
+              <td align="right">0.997</td>
+              <td align="right">3.26</td>
+              <td align="right">0.65</td>
+              <td align="right">9.8</td>
+              <td align="right">5</td>
+              </tr>
+              <tr>
+              <td align="right">11.2</td>
+              <td align="right">0.28</td>
+              <td align="right">0.56</td>
+              <td align="right">1.9</td>
+              <td align="right">0.075</td>
+              <td align="right">17</td>
+              <td align="right">60</td>
+              <td align="right">0.998</td>
+              <td align="right">3.16</td>
+              <td align="right">0.58</td>
+              <td align="right">9.8</td>
+              <td align="right">6</td>
+              </tr>
+              <tr>
+              <td align="right">7.4</td>
+              <td align="right">0.7</td>
+              <td align="right">0</td>
+              <td align="right">1.9</td>
+              <td align="right">0.076</td>
+              <td align="right">11</td>
+              <td align="right">34</td>
+              <td align="right">0.9978</td>
+              <td align="right">3.51</td>
+              <td align="right">0.56</td>
+              <td align="right">9.4</td>
+              <td align="right">5</td>
+              </tr>
+              </tbody>
+            </table>
+          </section>
+
+
+          <!--
+  			  Clustering
+  			  -->
+  			  
+  			  <section  data-background-image="/img/k_means.gif" 
+  			            data-background-opacity="0.2"
+                    data-background-size="contain"
+                    data-background-color="rgb(4,30,66)">
+            
+            <div style="text-align:left">
+              <p>
+              For example, in <strong>clustering</strong>, we assume there are latent classes or clusters of the training data with similar behavior. However, we do not know the label of each data point and the number of classes.
+              </p>
+              <p class="fragment">We aim to determine...</p>
+              
+              <ul>
+                <li class="fragment">...the number of clusters.</li>
+                <li class="fragment">...the cluster labels.</li>
+              </ul>
+              
+              <br><br>
+                <p class="fragment"><strong>Example Models</strong></p> 
+                <ul style="font-size:90%;">
+                  <li class="fragment">K-Means</li>  
+                  <li class="fragment">DBScan</li>
+                </ul>
+            </div>
+          
+            <!-- Notes -->
+            <aside class="notes">
+              <ul>
+                <li>We will be focusing on this in week 4.</li>
+                <li>The number of clusters amounts to determining the model complexity: more clusters = more unknown parameters.</li>
+                <li>Examples</li>
+                <ul>
+                  <li>discovering types of stars based on clustering astrophysical measurements.</li>
+                </ul>
+              </ul>
+            </aside>
+          </section>
+
+          <section  data-background-image="/img/k_means.gif"
+                    data-background-size="contain"
+                    data-background-color="rgb(255,255,255)"></section>
+          
+          <section  data-background-color="rgb(4,30,66)">
+            
+            <h4>Supervised Learning</h4>
+            <div style="text-align:left">
+              <p class="fragment">
+                In supervised learning, we have a training dataset of labelled input-output pairs, denoted $$D = \{(\mathbf{x}_n, y_n)\}^N_{n=1},$$ with inputs $\mathbf{x}_n$ and outputs $y_n$.
+              </p>
+              <br>
+              <p class="fragment">
+                We aim to use $D$ to learn the mapping from $\mathbf{x}$ to $y$ for generalization, i.e. to automatically label future inputs $\mathbf{x}^*$.
+              </p>
+            </div>
+            
+            <!-- Notes -->
+            <aside class="notes">
+              <ul>
+                <li>We will be focusing on this in weeks 5-10.</li>
+              </ul>
+            </aside>
+          </section>          
+          			  
+  			  <!--
+  			  Outputs
+  			  -->
+          
+          <section  data-background-image="/img/lr.png" 
+  			            data-background-opacity="0.2"
+  			            data-background-color="rgb(4,30,66)"
+                    data-background-size="contain"
+                    data-auto-animate>
+
+            <div style="text-align:left">
+              <p>
+                <strong>Regression</strong> aims to learn the mapping from the inputs $\mathbf{x}$ to a <em>continuous</em> output $y \in \mathbb{R}$.
+              </p>
+              <br>
+                <p class= "fragment"><strong>Example Models</strong></p> 
+                <ul style="font-size:90%;">
+                  <li class= "fragment">Linear Regression</li>  
+                  <li class= "fragment">Ridge/Lasso Regression</li>
+                  <li class= "fragment">Regression Tree</li> 
+                </ul>
+            </div>
+            <aside class="notes">
+              <strong>Regression</strong>
+              <ul>
+                <li>Examples</li>
+                <ul>
+                  <li>predicting tomorrow's stock market price given current market conditions and possibly other side information.</li>
+                  <li>predicting the age of a viewer watching a given video on YouTube.</li>
+                </ul>
+                <li>Extensions and Challenges</li>
+                <ul>
+                  <li>nonlinear mappings, </li>
+                  <li>multivariate outputs,</li>
+                  <li>high-dimensional inputs, </li>
+                  <li>outliers,</li>
+                  <li>non-smooth mappings. </li>
+                </ul>
+              </ul>
+            </aside>
+          </section>
+
+          <section  data-background-image="/img/lr.png" data-background-size="contain" data-background-color="rgb(255,255,255)" data-auto-animate></section>
+            
+          <section  data-background-image="/img/svm.png" 
+  			            data-background-opacity="0.2"
+  			            data-background-color="rgb(4,30,66)"
+                    data-background-size="contain"
+                    data-auto-animate>
+            
+            <div style="text-align:left">
+              <p>
+                <strong>Classification</strong>  aims to learn the mapping from the inputs $\mathbf{x}$ to a <em>categorical</em> output $y \in  \lbrace 1, \ldots, C \rbrace$, and is known as:
+              </p>
+              <ul>
+                <li class="fragment"><em>binary</em> classification when $C=2$, </li>
+                <li class="fragment"><em>multiclass</em> classification when $C>2$,
+                <li class="fragment"><em>multi-label</em> classification when the output is a vector of non mutually exclusive labels.
+              </ul>
+              <br>
+              <br>
+                <p class="fragment"><strong>Example Models</strong></p> 
+                <ul style="font-size:90%;">
+                  <li class="fragment">K-Nearest Neighbours</li>  
+                  <li class="fragment">Logisitic Regression</li> 
+                  <li class="fragment">Support Vector Machines</li>
+                  <li class="fragment">Decision Trees</li>
+                </ul>
+            </div>
+            
+            <aside class="notes">
+              <strong>Classification</strong>
+              <ul>
+                <li>Examples</li>
+                <ul>
+                  <li>Document classification</li>
+                  <ul>
+                    <li>binary: email spam filtering, </li>
+                    <li>multiclass: authorship attribution.</li>
+                  </ul>
+                  <li>Automated diagnosis</li>
+                  <ul>
+                    <li>binary: Epilepsy or not, </li>
+                    <li>multiclass: Types of epilepsy,</li>
+                    <li>multi-label: Neurological disorders with various subtypes (e.g. epilpesy, autism, ect.).</li>
+                  </ul>
+              </ul>
+            </aside>
+          </section>
+
+          <section  data-background-image="/img/svm.png" data-background-size="contain" data-background-color="rgb(255,255,255)" data-auto-animate></section>
+          
+          <section  data-background-color="rgb(4,30,66)">
+            <h3>Ensemble Methods</h3>
+            <p>Ensemble methods aim to improve generalisability of an algorithm by combining the predictions of several estimators<sup>5</sup>.</p>
+            <br>
+            <div style="text-align:left">
+              <p class="fragment">To achieve this there are three general methods:</p>
+              <ul>
+                <li class="fragment">Averaging</li>
+                <li class="fragment">Boosting</li>
+                <li class="fragment">Deep Learning</li>
+              </ul>
+            </div>
+            <aside class="notes">
+              <ul>
+                <li>We will be focusing on this in weeks 8-10.</li>
+              </ul>
+            </aside>
+          </section>
+          
+          <section  data-background-color="rgb(4,30,66)">
+            <h4>Averaging</h4>
+            <p>Averaging methods build several separate estimators and then average their predictions.</p> 
+            <br>
+            <div style="text-align:left">
+              <p class="fragment">For example, a <strong>bagging</strong> method averages an ensemble of base classifiers fit on random subsets of a dataset (observations and/or features) with replacement<sup>6</sup>.</p>
+              <br>
+              
+              <p class="fragment"><strong>Example Models</strong></p> 
+              <ul style="font-size:90%;">
+                <li class="fragment">Random Forest</li>  
+                <li class="fragment">Majority Voting Classifier</li> 
+              </ul>
+            </div>
+            <aside class="notes">
+              <ul>
+                <li>By averaging the output of multiple model we reduce the variance and chance of overfitting an estimator.</li>
+                <li>Without replacement being called pasting<sup>7</sup>.</li>
+                <li>[BRIEF DISCUSSION OF THE DIFFERENCE BETWEEN VARIANCE AND BIAS]</li>
+                <li>bagging methods tend to work best with complex estimators<sup>8</sup></li>
+              </ul>
+            </aside>
+          </section>
+          
+          <section  data-background-color="rgb(4,30,66)">
+            <h4>Boosting</h4>
+            <p>Boosting typically use an ensemble of weak estimators that are built sequentially, with each estimator attempting to reduce the bias of the predecessor<sup>2</sup>.</p> 
+            <br>
+              
+            <div style="text-align:left">
+              <p class="fragment"><strong>Example Models</strong></p> 
+              <ul style="font-size:90%;">
+                <li class="fragment">AdaBoost</li>  
+                <li class="fragment">XGBoost</li>
+                <li class="fragment">CatBoost</li>
+              </ul>
+            </div>
+            <aside class="notes">
+              <ul>
+                <li>Weak learners initially often only have a slight performance advantage over random guessing, but by focusing on training samples that are hard to classify, the overall performance of the ensemble is improved<sup>5</sup>.</li>
+              </ul>
+            </aside>
+          </section>
+          
+          <section  data-background-color="rgb(4,30,66)">
+            <h4>Deep Learning</h4>
+            <p>Layers of artificial neurons or other formulas are stacked on top of each other.</p>
+            <br>
+            <div style="text-align:left">
+              <p class="fragment">Nodes in the network are interconnected and typically arranged into input,
+  middle (hidden), and output layers.</p>
+              <br>
+                
+              <p class="fragment"><strong>Example Models</strong></p> 
+              <ul style="font-size:90%;">
+                <li class="fragment">Multi-layer Perceptron</li>  
+                <li class="fragment">Convolutional Neural Network</li>
+                <li class="fragment">Recurrent Neural Network</li>
+                <li class="fragment">Autoencoder</li>
+              </ul>
+            </div>
+            <aside class="notes">
+              <ul>
+                <li>Weak learners initially often only have a slight performance advantage over random guessing, but by focusing on training samples that are hard to classify, the overall performance of the ensemble is improved<sup>5</sup>.</li>
+              </ul>
+            </aside>
+          </section>
+          <section  data-background-iframe="http://playground.tensorflow.org/#activation=tanh&batchSize=10&dataset=circle&regDataset=reg-plane&learningRate=0.03&regularizationRate=0&noise=0&networkShape=4,2&seed=0.79178&showTestData=false&discretize=false&percTrainData=50&x=true&y=true&xTimesY=false&xSquared=false&ySquared=false&cosX=false&sinX=false&cosY=false&sinY=false&collectStats=false&problem=classification&initZero=false&hideText=false&learningRate_hide=false&regularizationRate_hide=false&percTrainData_hide=false&numHiddenLayers_hide=false&batchSize_hide=false&dataset_hide=false&regularization_hide=false&resetButton_hide=false&discretize_hide=false&noise_hide=false&problem_hide=false&activation_hide=false&stepButton_hide=false&showTestData_hide=false" data-background-interactive data-preload>
+            
+          </section>
+          
+			  </section>
+			  
+			  <!--
+  			Model Tuning
+  			-->
+    		<section>
+    			<section data-background-color="rgb(4,30,66)">
+    			  <h2>Model Evaluation & Tuning</h2>
+    			  <p><em>Regression</em> and <em>classification</em> use different metrics to assess the performance of a model.</p>
+    			  <br>
+  		      <table style="width:100%, border: none; font-size:90%;">
+  		          <tr>
+                  <th>Classification</th>
+                  <th>Regression</th>
+                </tr>
+                <tr>
+                  <td>Accuracy</td>
+                  <td>Mean squared error</td>
+                </tr>
+                <tr>
+                  <td>Sensitivity</td>
+                  <td>Mean absolute error</td>
+                </tr>
+                <tr>
+                  <td>Specificity</td>
+                  <td>Median absolute error</td>
+                </tr>
+                <tr>
+                  <td>Precision</td>
+                  <td>$R^2$ (coefficient of determination)</td>
+                </tr>
+              </table>
+            <aside class="notes">
+              <ul>
+                <li>We will be focusing on this in the workshops.</li>
+              </ul>
+            </aside>
+    			</section>
+    			<section  data-background-color="rgb(4,30,66)">
+            <p style="text-align:left">We can assess how a model performs on data it is trained on (training set) and data it has not seen before (validation/test set).</p>
+            <br>
+            <p style="text-align:left" class="fragment">While tuning our model, we could evaluate our model performance on multiple splits (e.g. K-fold cross-validation).</p>
+
+            <aside class="notes">
+              <ul>
+                <li>We only look at the performance on the test set at the very end after we are done tweeking our model!</li>
+              </ul>
+            </aside>
+          </section>
+          
+          <section  data-background-color="rgb(4,30,66)">
+            <h3>Model Tuning</h3>
+            <div style="text-align:left">
+              <p>Most models have settings we can change (hyper-parameters).</p>
+              <p>Also, it may not be clear what feature pre-processing or engineering steps work best.</p>
+              <br>
+              <p class="fragment">We could fiddle with them manually until we find a great combination (tedious)...</p>
+              <p class="fragment">... or get the computer to do this for you (e.g. grid-search, random search).</p>
+            </div>
+          </section>
+  			</section>
+  			
+  			<!--
+  			Model Deployment/Monitoring
+  			-->
+  			<section data-background-color="rgb(4,30,66)">
+  			  <h2>Model Deployment/Monitoring</h2>
+  			    <p>Once a model is chosen, we can deploy it into production for inference.</p>
+  			    <br>
+  			    <p style="text-align:left">The model needs to be continuously monitored for model performance, retrained, and recalibrated accordingly.</p>
+          <aside class="notes">
+            <ul>
+              <li>We may need to keep collecting new data to continue to improve the model and prevent it from becoming stale.</li>
+              <li>We will not be focusing on this in this course.</li>
+              <li>This will not always be done by the data scientist and may be a task for an engineering team.</li>
+            </ul>
+          </aside>
+  			</section>
+  			
+  			<!--
+  			References
+  			-->
+  			<section data-background-color="rgb(4,30,66)" data-visibility="uncounted">
+  			  <h2>References</h2>
+  			  <ol style="font-size:70%;">
+			      <li>Alberto, A., & Prateek, J. (2020). Artificial Intelligence with Python. Packt Publishing Ltd.</li>
+			      <li>Geron, A. (2019). Hands-on machine learning with Scikit-Learn, Keras, and TensorFlow: Concepts, tools, and techniques to build intelligent systems. O'Reilly Media.</li>
+			      <li>Zheng, A., & Casari, A. (2018). Feature Engineering for Machine Learning principles and techniques for data scientists. O'Reilly Media, Inc.</li>
+			      <li><a href="https://sebastianraschka.com/faq/docs/dataprep-vs-dataengin.html">https://sebastianraschka.com/faq/docs/dataprep-vs-dataengin.html</a></li>
+			      <li>Raschka, S., & Mirjalili, V. (2019). Python Machine Learning: Machine Learning and Deep Learning with Python, scikit-learn, and TensorFlow 2 (Third). Packt Publishing Ltd.</li>
+			      <li>Breiman, L. (1996). Bagging predictors. Machine Learning, 140, 123–140.</li>
+			      <li>Breiman, L. (1999). Pasting small votes for classification in large databases and on-line. Machine learning, 36(1), 85-103.</li>
+			      <li><a href="https://scikit-learn.org/stable/modules/ensemble.html#bagging">https://scikit-learn.org/stable/modules/ensemble.html#bagging</a></li>
+			    </ol> 
+  			</section>
+			  
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script src="plugin/math/math.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				
+				navigationMode: "linear",
+        
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath ]
+			});
+		</script>
+	</body>
+</html>
