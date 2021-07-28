@@ -1,0 +1,232 @@
+\documentclass[]{article}
+%\usepackage[a4paper, margin=2in]{geometry}
+
+\usepackage{tikz} % for flowcharts
+\usetikzlibrary{shapes.geometric, arrows} % for flowcharts
+\usepackage{geometry}
+\pagenumbering{gobble}
+
+%opening
+\title{Week 1 materials}
+\author{David Elliott}
+
+\begin{document}
+
+\maketitle
+
+%\pagebreak
+
+%\section{Pipeline Overview}
+
+%\clearpage
+\newgeometry{top=1cm, bottom=2cm, left=0.1cm,right=0.1cm, landscape} % reduce the margins to help fit the figures in
+
+\tikzstyle{decision} = [diamond, draw, fill=red!20, 
+text width=3cm,  minimum width=3cm, minimum height=1cm, text badly centered, node distance=3.5cm, inner sep=0pt]
+\tikzstyle{block} = [rectangle, draw, fill=blue!20,  minimum width=3cm, minimum height=1cm, text width=3cm, node distance=2.5cm, text centered, rounded corners, minimum height=4em]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3.5cm, minimum height=2em]
+
+\vfill
+\begin{center}
+	\begin{figure}
+		\begin{tikzpicture}[node distance = 3cm, auto]
+			% Place nodes
+			\node [block, fill=orange!20] (prob) {Problem Definition};
+			\node [block, right of=prob, xshift=2cm, fill=orange!20] (data) {Data Collection};
+			\node [block, right of=data, xshift=2cm, fill=orange!20] (EDA) {Exploratory Data Analysis};
+			\node [block, right of=EDA, xshift=2cm] (pre) {Pre-Processing};
+			\node [decision, below of=pre] (engineer) {Manual Feature Creation?};
+			\node [block, left of=engineer, xshift=-2cm] (extraction) {Feature\par Engineering};
+			\node [block, below of=engineer, node distance=3.5cm] (classification) {Model Training};
+			\node [block, left of=extraction, xshift=-2cm] (selection) {Dimensionality Reduction};
+			\node [block, right of=classification, xshift=2cm, fill=green!20] (eval) {Evaluation: Validation};
+			\node [decision, below of=classification] (decide) {Model Tuning?};
+			\node [block, below of=decide, node distance=3.5cm, fill=green!20] (Test) {Evaluation:\\ Test};
+			\node [block, below of=Test, fill=yellow!30] (deploy) {Model Deployment};
+			\node [block, left of=deploy, xshift=-2cm, fill=green!20] (monitor) {Performance Monitoring};
+			
+			\draw [arrow] (prob) -- (data);
+			\draw [arrow] (data) -- (EDA);
+			\draw [arrow] (EDA) -- (pre);
+			
+			\draw [arrow] (pre) -- (engineer);
+			\draw [arrow] (engineer) -- node {no}(classification);
+			\draw [arrow] (classification) -- (decide);
+			\draw [arrow] (decide) -- node {no}(Test);
+			
+			\draw [arrow] (engineer) -- node {yes} (extraction);
+			\draw [arrow] (extraction) |- (classification);
+			\draw [arrow,dashed] (extraction) -- (selection);
+			\draw [arrow,dashed] (selection) |- (classification);
+			\draw [arrow] (decide) -| node [near start] {yes} (eval);
+			\draw [arrow] (eval) -- (classification);
+			
+			\draw [arrow] (Test) -- (deploy);
+			\draw [arrow] (deploy) -- (monitor);
+			\draw [arrow,dashed] (monitor) -| (prob);
+			
+		\end{tikzpicture}
+		%\caption{A visualisation of a machine learning project pipeline.} 
+		%\label{fig:Pipeline}
+	\end{figure}
+\end{center}
+\vfill
+
+%\restoregeometry
+\clearpage
+
+\vfill
+\begin{center}
+	\begin{figure}
+		\begin{tikzpicture}[node distance = 3cm, auto]
+			% Place nodes
+			\node [block, fill=orange!20] (prob) {Problem Definition \\ (Workshops)};
+			\node [block, right of=prob, xshift=2cm, fill=orange!20] (data) {Data Collection  \\ (Week 2)};
+			\node [block, right of=data, xshift=2cm, fill=orange!20] (EDA) {Exploratory Data Analysis \\ (Workshops)};
+			\node [block, right of=EDA, xshift=2cm] (pre) {Pre-Processing \\ (Week 2)};
+			\node [decision, below of=pre] (engineer) {Manual Feature Creation?};
+			\node [block, left of=engineer, xshift=-2cm] (extraction) {Feature\par Engineering  \\ (Week 2)};
+			\node [block, below of=engineer, node distance=3.5cm] (classification) {Model Training  \\ (Weeks 4-10)};
+			\node [block, left of=extraction, xshift=-2cm] (selection) {Dimensionality Reduction \\ (Week 3)};
+			\node [block, right of=classification, xshift=2cm, fill=green!20] (eval) {Evaluation: Validation \\ (Workshops)};
+			\node [decision, below of=classification] (decide) {Model Tuning?};
+			\node [block, below of=decide, node distance=3.5cm, fill=green!20] (Test) {Evaluation:\\ Test \\ (Workshops)};
+			\node [block, below of=Test, fill=yellow!30] (deploy) {Model Deployment \\ (N/A)};
+			\node [block, left of=deploy, xshift=-2cm, fill=green!20] (monitor) {Performance Monitoring \\ (N/A)};
+			
+			\draw [arrow] (prob) -- (data);
+			\draw [arrow] (data) -- (EDA);
+			\draw [arrow] (EDA) -- (pre);
+			
+			\draw [arrow] (pre) -- (engineer);
+			\draw [arrow] (engineer) -- node {no}(classification);
+			\draw [arrow] (classification) -- (decide);
+			\draw [arrow] (decide) -- node {no}(Test);
+			
+			\draw [arrow] (engineer) -- node {yes} (extraction);
+			\draw [arrow] (extraction) |- (classification);
+			\draw [arrow,dashed] (extraction) -- (selection);
+			\draw [arrow,dashed] (selection) |- (classification);
+			\draw [arrow] (decide) -| node [near start] {yes} (eval);
+			\draw [arrow] (eval) -- (classification);
+			
+			\draw [arrow] (Test) -- (deploy);
+			\draw [arrow] (deploy) -- (monitor);
+			\draw [arrow,dashed] (monitor) -| (prob);
+			
+		\end{tikzpicture}
+		%\caption{A visualisation of a machine learning project pipeline.} 
+		%\label{fig:Pipeline}
+	\end{figure}
+\end{center}
+\vfill
+
+\restoregeometry
+\clearpage
+
+%\section{Models Overview}
+\newgeometry{top=2cm, bottom=2cm, left=0.1cm,right=0.1cm} % reduce the margins to help fit the figures in
+
+\tikzstyle{bubble} = [circle, draw, minimum size=1cm, node distance=4cm, text centered, font=\footnotesize, text width=2cm]
+\tikzstyle{method} = [node distance=3cm, text centered, font=\scriptsize, text width=2cm, color=darkgray]
+
+\begin{figure}[!htb]
+	\centering
+	\begin{tikzpicture}[auto]
+		% Place nodes
+		\node [bubble, font=\small] (ml) {\textbf{Machine Learning}};
+		% \node [bubble, left of= ml] (reinforce) {Reinforcement Learning};
+		\node [bubble, above of= ml] (classical) {Classical Learning};
+		\node [bubble, above right of= classical] (supervised) {Supervised};
+		\node [bubble, above left of= classical] (unsupervised) {Unsupervised};
+		\node [bubble, below right of= supervised] (regression) {Regression};
+		\node [bubble, above right of= supervised] (classification) {Classification};
+		\node [bubble, below left of= unsupervised] (reduce) {Dimension Reduction};
+		\node [bubble, above left of= unsupervised] (clustering) {Clustering};
+		\node [bubble, below of= ml] (ensemble) {Ensemble Methods};
+		\node [bubble, below right of= ensemble] (nets) {Neural Nets and Deep Learning};
+		\node [bubble, left of= ensemble] (bagging) {Bagging};
+		\node [bubble, right of= ensemble] (boosting) {Boosting};
+		\node [bubble, below left of= ensemble] (stacking) {Stacking};
+		
+		% \node [method, left of= reinforce] (q) {Q-Learning};
+		% \node [method, below left of= reinforce] (dq) {Deep Q-Network};
+		% \node [method, above left of= reinforce] (SARSA) {SARSA};
+		\node [method, left of= classification] (knn) {K-Nearest Neighbour};
+		\node [method, above left of= classification] (bayes) {Naive Bayes};
+		\node [method, above of= classification] (svm) {Support Vector Machine};
+		\node [method, above right of= classification] (trees) {Decision Trees};
+		\node [method, right of= classification] (log) {Logistic Regression};
+		\node [method, above right of= regression] (lin) {Linear Regression};
+		\node [method, right of= regression] (pol) {Polynomial Regression};
+		\node [method, below right of= regression] (ridge) {Ridge/Lasso Regression};
+		\node [method, above left of= reduce] (tsne) {T-Distributed Stochastic Neighbor Embedding};
+		\node [method, left of= reduce] (PCA) {Principal Component Analysis};
+		\node [method, below left of= reduce] (SVD) {Singular Value Decomposition};
+		\node [method, above of= reduce] (LDA) {Linear Discriminant Analysis};
+		\node [method, above left of= clustering] (fuzzy) {Fuzzy C-Means};
+		\node [method, above of= clustering] (k-means) {K-Means};
+		\node [method, above right of= clustering] (DBSCAN) {DBSCAN};
+		\node [method, left of= bagging] (forest) {Random Forest};
+		\node [method, below left of= bagging] (ERT) {Extremely Randomized Trees};
+		\node [method, above of= boosting] (adaboost) {AdaBoost};
+		\node [method, above right of= boosting] (catboost) {CatBoost};
+		\node [method, right of= boosting] (lightgbm) {LightGBM};
+		\node [method, below right of= boosting] (xgboost) {XGBoost};
+		\node [method, left of= nets] (auto) {Autoencoders};
+		\node [method, below left of= nets] (cnn) {Convolutional Neural Networks};
+		\node [method, below of= nets] (mlp) {Perceptrons};
+		\node [method, below right of= nets] (rnn) {Recurrent Neural Networks};
+		\node [method, right of= nets] (gan) {Generative Adversarial Networks};
+		
+		% \draw [] (ml) -- (reinforce);
+		\draw [] (ml) -- (classical);
+		\draw [] (classical) -- (supervised);
+		\draw [] (classical) -- (unsupervised);
+		\draw [] (supervised) -- (regression);
+		\draw [] (supervised) -- (classification);
+		\draw [] (unsupervised) -- (reduce);
+		\draw [] (unsupervised) -- (clustering);
+		\draw [] (ml) -- (ensemble);
+		\draw [] (ensemble) -- (nets);
+		\draw [] (ensemble) -- (bagging);
+		\draw [] (ensemble) -- (boosting);
+		\draw [] (ensemble) -- (stacking);
+		
+		% \draw [] (reinforce) -- (q);
+		% \draw [] (reinforce) -- (dq);
+		% \draw [] (reinforce) -- (SARSA);
+		\draw [] (classification) -- (knn);
+		\draw [] (classification) -- (bayes);
+		\draw [] (classification) -- (svm);
+		\draw [] (classification) -- (trees);
+		\draw [] (classification) -- (log);
+		\draw [] (regression) -- (lin);
+		\draw [] (regression) -- (pol);
+		\draw [] (regression) -- (ridge);
+		\draw [] (reduce) -- (tsne);
+		\draw [] (reduce) -- (PCA);
+		\draw [] (reduce) -- (LDA);
+		\draw [] (reduce) -- (SVD);
+		\draw [] (clustering) -- (fuzzy);
+		\draw [] (clustering) -- (k-means);
+		\draw [] (clustering) -- (DBSCAN);
+		\draw [] (bagging) -- (forest);
+		\draw [] (bagging) -- (ERT);
+		\draw [] (boosting) -- (adaboost);
+		\draw [] (boosting) -- (catboost);
+		\draw [] (boosting) -- (lightgbm);
+		\draw [] (boosting) -- (xgboost);
+		\draw [] (nets) -- (cnn);
+		\draw [] (nets) -- (rnn);
+		\draw [] (nets) -- (mlp);
+		\draw [] (nets) -- (auto);
+		\draw [] (nets) -- (gan);
+		
+	\end{tikzpicture}
+	%\caption{Categorisation for a sample of machine learning methods.} 
+	%\label{fig:ml_categories}
+\end{figure}
+
+\end{document}
