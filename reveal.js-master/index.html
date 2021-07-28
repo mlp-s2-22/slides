@@ -16,8 +16,182 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+			  
+			  <section data-background-color="rgb(4,30,66)">
+			    <img data-src="img/UoE_Stacked Logo_White_v1_160215.png" style="position: absolute; top: -10%; left: 0%; width:50%;"></img>
+			    <br><br><br><br>
+				  <h1>Welcome to MLP!</h1>
+				  <br><br>
+				  <h3>Machine Learning in Python</h3>
+				  <p><a href = "https://github.com/mlp-s2-22/website">https://github.com/mlp-s2-22/website</a></p>
+				  <br>
+				  <h3>Dr. David Elliott</h3>
+				  
+				</section>
+			  
+			  <!-- 
+				What is ML? 
+				-->
+			  
+			  <section data-background-color="rgb(4,30,66)">
+				  <h2>What is Machine Learning?</h2>
+				  <p>Machine learning (ML) aims to automatically detect patterns in data to predict future outcomes of interests and make decisions.</p>
+				</section>
+			  
+			  <!-- 
+				Aims 
+				-->
+			  
+				<section>
+  			  <section data-background-color="rgb(4,30,66)">
+  				  <h2>Aims</h2>
+  				  <p>
+  				    We aim to teach some of the fundamentals of ML, not viewing it just as a black box but
+  				    understanding:
+  				  </p>
+  				  
+  				  <ul>
+  				    <li class="fragment fade-left">Theory, ideas, advantages, and limitations of the methods.</li>
+              <li class="fragment fade-left">How to select, compare, and evaluate different methods.</li>
+              <li class="fragment fade-left">Implementation in practice with Python.</li>
+            </ul>
+  				  
+  				</section>
+  				<section data-background-color="rgb(4,30,66)" data-auto-animate>
+  				  <p>We will introduce a large number of methods...</p>
+  				</section>
+
+  				<section data-background-image="/img/lr.png" 
+  			            data-background-opacity="0.4"
+  			            data-background-color="rgb(4,30,66)"
+                    data-background-size="contain"
+                    data-auto-animate>
+  				  <p>We will introduce a large number of methods...</p>
+  				  <br>
+  				  <div style="text-align:left">
+	  				  <p>...from the simplest and most commonly used (e.g. Linear Regression)...</p>
+	  				</div>
+  				</section>
+
+  				<section 	data-background-iframe="https://gfycat.com/ifr/AdorableJoyfulLemming" 
+  									data-preload 
+  									data-background-opacity="0.4"
+  									data-auto-animate>
+  				  <p>We will introduce a large number of methods...</p>
+  				  <br>
+  				  <div style="text-align:left">
+	  				  <p>...from the simplest and most commonly used (e.g. Linear Regression)...</p>
+	  				  <br>
+	  				  <p>...to more complex ensemble methods such as Deep Learning. </p>
+	  				</div>
+  				</section>
+  			</section>
+
+  			<section>
+
+  				<section data-background-color="rgb(4,30,66)">
+  				  <p>
+  				    In the lectures we will learn the theoretical foundations of these approaches, and apply this knowledge to weekly exercises.
+  				</section>
+  				
+  				<section  data-background-color="rgb(4,30,66)"
+  				          data-auto-animate>
+  				  <p>
+  				    In the workshops, rather than implementing our own toy versions of algorithms on toy data, we will use production-ready Python frameworks on "real" research data.
+  				  </p>
+  				</section>
+  				
+  				<section  data-background-iframe="https://scikit-learn.org/stable/" 
+				            data-background-opacity="0.2"
+				            data-preload
+				            data-auto-animate>
+  				  <p>
+  				    In the workshops, rather than implementing our own toy versions of algorithms on toy data, we will use production-ready Python frameworks on "real" research data.
+  				  </p>
+  				  
+  				  <ul>
+  				    <li><code>Scikit-Learn</code></li>
+            </ul>
+            <!-- Notes -->
+            <aside class="notes">
+              <p>Scikit-learn is easy to use and impliments machine learning algoirhtms efficiently. Its a great entry point.</p>
+            </aside>
+  				</section>
+  				
+  				<section  data-background-iframe="https://keras.io/" 
+  									data-preload 
+				            data-background-opacity="0.2"
+				            data-auto-animate>
+  				  <p>
+  				    In the workshops, rather than implementing our own toy versions of algorithms on toy data, we will use production-ready Python frameworks on "real" research data.
+  				  </p>
+  				  
+  				  <ul>
+  				    <li><code>Scikit-Learn</code></li>
+              <li><code>Keras</code></li>
+            </ul>
+            <aside class="notes">
+              <p>Keras is a high-level Deep Learning API that makes training and running neural networks simple. It runs ontop of a number of neural network APIs such as TensorFlow, Theno, or Microsoft Cognitive Toolkit.</p>
+            </aside>
+  				</section>
+  			</section>
+				
+				<section  data-background-iframe="https://jupyter.org/"
+				          data-preload 
+				          data-background-opacity="0.2">
+				  <h2>Software</h2>
+				  <p>We will be using Jupyter Notebooks to write code and present our work.</p>
+				  <aside class="notes">
+          	<p>For details on how to setup a working environment, please go to <a href = "https://mlp-s2-22.github.io/website/pages/setup.html">https://mlp-s2-22.github.io/website/pages/setup.html</a>.</p>
+          </aside>
+				</section>
+
+				<!-- 
+				Course FAQ 
+				-->
+				
+				<section>
+  				<section data-background-color="rgb(4,30,66)">
+  				  <h2>Course FAQ</h2>
+  				  <br>
+  				  <h4 style="text-align: left">Q - What background experience does this course assume?</h4>
+  				  <p style="text-align: left" class="fragment" data-fragment-index="0">A - It is assumed students have prior experience with Python and understand the basics of...</p>
+  				  <ul style="font-size: 80%; text-align: left">
+  				    <li class="fragment" data-fragment-index="1">data types and structures (e.g. <code>numpy</code> and <code>pandas</code>),</li>
+  				    <li class="fragment" data-fragment-index="2">loops and vectorisation,</li>
+  				    <li class="fragment" data-fragment-index="3">data visualisation (e.g. <code>matplotlib</code> and/or <code>seaborn</code>).</li>
+  				  </ul>
+  				  <p style="text-align: left" class="fragment" data-fragment-index="4">
+  				    Also some reasonable understanding of undergraduate-level maths is required.</p>
+  				    
+  				  <p style="font-size: 80%; text-align: left" class="fragment" data-fragment-index="4">
+  				    (e.g. calculus, linear algebra, probabilities, statistics)
+  				  </p>
+  				</section>
+  				<section  data-background-image="https://miro.medium.com/max/2400/1*KWhvKrCjKG1JbbWPoSLO4g.png"
+				            data-background-opacity="0.2"
+				            data-background-size="contain"
+				            data-background-color="rgb(4,30,66)">
+  				  <h4 style="text-align: left">Q: Why Python?</h4>
+  				  <p style="text-align: left" class="fragment">A - It is a powerful yet simple language. It has become the most popular programming language for data science because it can allow us to quickly try ideas and put concepts into action.</p>
+  				</section>
+				</section>
+				
+				<section  data-background-iframe="https://mlp-s2-22.github.io/website/"
+				          data-preload 
+				          data-background-opacity="0.2">
+				  <p>
+				    One link to rule them all... 
+				    <br> <br>
+				    ... where you can find everything except your course marks!
+				    <br> <br>
+				    <a href = "https://bit.ly/mlped21">https://bit.ly/mlped21</a>
+				  </p>
+				  <aside class="notes">
+          	<p>Course marks will be located on Learn.</p>
+          </aside>
+				</section>
+
 			</div>
 		</div>
 
@@ -31,6 +205,8 @@
 			// - https://revealjs.com/config/
 			Reveal.initialize({
 				hash: true,
+				
+				navigationMode: "linear",
 
 				// Learn about plugins: https://revealjs.com/plugins/
 				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
